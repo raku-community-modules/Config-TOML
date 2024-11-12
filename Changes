@@ -1,0 +1,4 @@
+Revision history for Config::TOML
+
+{{$NEXT}}
+    - Initial version as a Raku Community module

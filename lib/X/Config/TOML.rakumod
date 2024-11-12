@@ -1,5 +1,3 @@
-use v6;
-
 # X::Config::TOML::DuplicateKeys {{{
 
 class X::Config::TOML::DuplicateKeys
@@ -353,4 +351,4 @@ class X::Config::TOML::String::EscapeSequence
 
 # end X::Config::TOML::String::EscapeSequence }}}
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

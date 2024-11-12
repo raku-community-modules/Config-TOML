@@ -1,6 +1,6 @@
-use v6;
 use Config::TOML::Parser::Grammar;
 use X::Config::TOML;
+
 unit class Config::TOML::Dumper;
 
 has Str:D $!toml = '';
@@ -283,4 +283,4 @@ multi sub to-toml($value)
     die(X::Config::TOML::Dumper::BadValue.new(:$value));
 }
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

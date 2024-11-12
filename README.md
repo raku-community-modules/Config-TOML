@@ -1,9 +1,17 @@
-# Config::TOML
+[![Actions Status](https://github.com/raku-community-modules/Config-TOML/actions/workflows/linux.yml/badge.svg)](https://github.com/raku-community-modules/Config-TOML/actions) [![Actions Status](https://github.com/raku-community-modules/Config-TOML/actions/workflows/macos.yml/badge.svg)](https://github.com/raku-community-modules/Config-TOML/actions) [![Actions Status](https://github.com/raku-community-modules/Config-TOML/actions/workflows/windows.yml/badge.svg)](https://github.com/raku-community-modules/Config-TOML/actions)
 
-TOML file parser and writer.
+NAME
+====
 
+Config::TOML - TOML file parser and writer
 
-## Usage
+DESCRIPTION
+===========
+
+Config::TOML exports two subroutines: `from-toml` and `to-toml`.
+
+SYNOPSIS
+========
 
 TOML to Raku:
 
@@ -31,26 +39,23 @@ my %h = :a<alpha>, :b<bravo>, :c<charlie>;
 to-toml(%h);
 ```
 
+ADVANCED USAGE
+==============
 
-## Advanced Usage
-
-### Specifying a custom local offset for TOML date values
+Specifying a custom local offset for TOML date values
+-----------------------------------------------------
 
 TOML date values can take three different forms:
 
-1. [RFC 3339](http://tools.ietf.org/html/rfc3339) timestamps
-   (`YYYY-MM-ddThh:mm:ss.ffff+zz`)
-2. RFC 3339 timestamps with the local offset omitted
-   (`YYYY-MM-ddThh:mm:ss.ffff`)
-3. Standard calendar dates (`YYYY-MM-dd`)
+  * [RFC 3339](http://tools.ietf.org/html/rfc3339) timestamps (`YYYY-MM-ddThh:mm:ss.ffff+zz`)
+
+  * RFC 3339 timestamps with the local offset omitted (`YYYY-MM-ddThh:mm:ss.ffff`)
+
+  * Standard calendar dates (`YYYY-MM-dd`)
 
 Config::TOML builds Raku `Date`s from standard calendar dates.
 
-By default, Config::TOML builds Raku `DateTime`s from TOML datetime
-values that do not include a local offset using the host machine's local
-offset. To override the default behavior of using the host machine's
-local offset for date values where the offset is omitted, pass the
-`date-local-offset` parameter (with an integer value) to `from-toml`:
+By default, Config::TOML builds Raku `DateTime`s from TOML datetime values that do not include a local offset using the host machine's local offset. To override the default behavior of using the host machine's local offset for date values where the offset is omitted, pass the `date-local-offset` named argument (with an integer value) to `from-toml`:
 
 ```raku
 my $cfg = slurp 'config.toml';
@@ -59,33 +64,30 @@ my $cfg = slurp 'config.toml';
 my %toml = from-toml($cfg, :date-local-offset(0));
 ```
 
-To calculate a target timezone's local offset for the
-`date-local-offset` parameter value, multiply its [UTC
-offset](https://en.wikipedia.org/wiki/List_of_UTC_time_offsets) hours
-by 60, add to this its UTC offset minutes, and multiply the result by 60.
+To calculate a target timezone's local offset for the `date-local-offset` named argument value, multiply its [UTC offset](https://en.wikipedia.org/wiki/List_of_UTC_time_offsets) hours by 60, add to this its UTC offset minutes, and multiply the result by 60.
 
-Timezone            | UTC Offset | Calculation
----                 | ---        | ---
-Africa/Johannesburg | UTC+02:00  | `((2 * 60) + 0) * 60 = 7200`
-America/Los_Angeles | UTC-07:00  | `((-7 * 60) + 0) * 60 = -25200`
-Asia/Seoul          | UTC+09:00  | `((9 * 60) + 0) * 60 = 32400`
-Australia/Sydney    | UTC+10:00  | `((10 * 60) + 0) * 60 = 36000`
-Europe/Berlin       | UTC+01:00  | `((1 * 60) + 0) * 60 = 3600`
-UTC                 | UTC±00:00  | `((0 * 60) + 0) * 60 = 0`
+<table class="pod-table">
+<thead><tr>
+<th>Timezone</th> <th>UTC Offset</th> <th>Calculation</th> <th></th>
+</tr></thead>
+<tbody>
+<tr> <td>Africa/Johannesburg</td> <td>UTC+02:00</td> <td>((2 * 60)</td> <td>0) * 60 = 7200</td> </tr> <tr> <td>America/Los_Angeles</td> <td>UTC-07:00</td> <td>((-7 * 60)</td> <td>0) * 60 = -25200</td> </tr> <tr> <td>Asia/Seoul</td> <td>UTC+09:00</td> <td>((9 * 60)</td> <td>0) * 60 = 32400</td> </tr> <tr> <td>Australia/Sydney</td> <td>UTC+10:00</td> <td>((10 * 60)</td> <td>0) * 60 = 36000</td> </tr> <tr> <td>Europe/Berlin</td> <td>UTC+01:00</td> <td>((1 * 60)</td> <td>0) * 60 = 3600</td> </tr> <tr> <td>UTC</td> <td>UTC±00:00</td> <td>((0 * 60)</td> <td>0) * 60 = 0</td> </tr>
+</tbody>
+</table>
 
-To more easily ascertain your host machine's local offset, open a Raku
-repl and print the value of `$*TZ`.
+To more easily ascertain your host machine's local offset, open a Raku repl and print the value of `$*TZ`.
 
+AUTHOR
+======
 
-## Installation
+Andy Weidenbaum
 
-### Dependencies
+COPYRIGHT AND LICENSE
+=====================
 
-- Raku
-- [Crane](https://github.com/atweiden/crane)
+Copyright 2015 - 2022 Andy Weidenbaum
 
+Copyright 2024 Raku Community
 
-## Licensing
+This is free and unencumbered public domain software. For more information, see http://unlicense.org/ or the accompanying UNLICENSE file.
 
-This is free and unencumbered public domain software. For more
-information, see http://unlicense.org/ or the accompanying UNLICENSE file.
