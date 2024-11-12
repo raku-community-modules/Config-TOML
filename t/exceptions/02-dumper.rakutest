@@ -1,9 +1,7 @@
-use v6;
-use lib 'lib';
 use Config::TOML;
 use Test;
 
-plan(3);
+plan 3;
 
 # check keys for validity
 subtest({
@@ -338,4 +336,4 @@ subtest({
     (%valid, %invalid) = Empty;
 });
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

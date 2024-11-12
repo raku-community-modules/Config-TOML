@@ -1,10 +1,8 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML::Parser::Actions;
 use Config::TOML::Parser::Grammar;
 
-plan(9);
+plan 9;
 
 # empty array grammar-actions tests {{{
 
@@ -2280,4 +2278,4 @@ subtest({
 
 # end commented array grammar-actions tests }}}
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

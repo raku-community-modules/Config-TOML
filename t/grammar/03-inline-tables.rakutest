@@ -1,9 +1,7 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML::Parser::Grammar;
 
-plan(1);
+plan 1;
 
 # commented inline table grammar tests {{{
 
@@ -143,4 +141,4 @@ subtest({
 
 # end commented inline table grammar tests }}}
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

@@ -1,9 +1,7 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML::Parser::Grammar;
 
-plan(5);
+plan 5;
 
 # comment grammar tests {{{
 
@@ -919,4 +917,4 @@ subtest({
 
 # end datetime grammar tests }}}
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0 nowrap:
+# vim: expandtab shiftwidth=4

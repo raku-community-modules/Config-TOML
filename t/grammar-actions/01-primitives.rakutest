@@ -1,10 +1,8 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML::Parser::Actions;
 use Config::TOML::Parser::Grammar;
 
-plan(7);
+plan 7;
 
 # string grammar-actions tests {{{
 # --- basic string equivalency tests {{{
@@ -2268,4 +2266,4 @@ subtest({
 
 # end datetime grammar-actions tests }}}
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0 nowrap:
+# vim: expandtab shiftwidth=4

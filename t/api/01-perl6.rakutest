@@ -1,9 +1,7 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML;
 
-plan(1);
+plan 1;
 
 subtest({
     # parse toml from string
@@ -82,4 +80,4 @@ subtest({
     );
 });
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

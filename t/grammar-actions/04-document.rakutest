@@ -1,10 +1,8 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML::Parser::Actions;
 use Config::TOML::Parser::Grammar;
 
-plan(1);
+plan 1;
 
 # document grammar tests {{{
 
@@ -1582,4 +1580,4 @@ subtest({
 
 # end table grammar tests }}}
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

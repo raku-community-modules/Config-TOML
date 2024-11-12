@@ -1,9 +1,7 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML::Parser::Grammar;
 
-plan(9);
+plan 9;
 
 # empty array grammar tests {{{
 
@@ -1184,4 +1182,4 @@ subtest({
 
 # end commented array grammar tests }}}
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

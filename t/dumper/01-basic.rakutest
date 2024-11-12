@@ -1,9 +1,7 @@
-use v6;
-use lib 'lib';
 use Config::TOML;
 use Test;
 
-plan(4);
+plan 4;
 
 subtest({
     my %h =
@@ -162,4 +160,4 @@ subtest({
     is($toml, $expected, 'Is expected value');
 });
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4

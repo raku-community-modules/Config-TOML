@@ -1,10 +1,8 @@
-use v6;
-use lib 'lib';
 use Test;
 use Config::TOML::Parser::Actions;
 use Config::TOML::Parser::Grammar;
 
-plan(2);
+plan 2;
 
 subtest({
     my Str $toml-a = Q:to/EOF/;
@@ -402,4 +400,4 @@ subtest({
     );
 });
 
-# vim: set filetype=raku foldmethod=marker foldlevel=0:
+# vim: expandtab shiftwidth=4
