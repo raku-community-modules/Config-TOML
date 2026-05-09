@@ -77,7 +77,7 @@ method !dump-simple-pairs(Hash:D @simple-pairs)
 {
     @simple-pairs.map({
         my Str:D $key =
-            is-bare-key(.keys[0]) ?? .keys[0] !! .keys[0].perl;
+            is-bare-key(.keys[0]) ?? .keys[0] !! .keys[0].raku;
         $!toml ~= "$key = {to-toml(.values[0])}\n";
     });
 }
@@ -86,7 +86,7 @@ method !dump-nested-pairs(Hash:D @nested-pairs, @prefix)
 {
     @nested-pairs.map({
         my Str:D $key =
-            is-bare-key(.keys[0]) ?? .keys[0] !! .keys[0].perl;
+            is-bare-key(.keys[0]) ?? .keys[0] !! .keys[0].raku;
         self!visit(.values[0], :prefix(|@prefix, $key), :!extra-brackets);
     });
 }
@@ -97,7 +97,7 @@ method !dump-table-array-pairs(Hash:D @table-array-pairs, @prefix)
     {
         my Str:D $key = is-bare-key(%table-array-pair.keys[0])
             ?? %table-array-pair.keys[0]
-            !! %table-array-pair.keys[0].perl;
+            !! %table-array-pair.keys[0].raku;
 
         my @aux-prefix = |@prefix, $key;
 
@@ -132,7 +132,7 @@ multi sub is-valid-key(Str:D $key --> Bool:D)
 {
     is-bare-key($key)
         || Config::TOML::Parser::Grammar.parse(
-               $key.perl,
+               $key.raku,
                :rule<keypair-key-single>
            ).so;
 }
@@ -250,7 +250,7 @@ multi sub to-toml(Associative:D $a --> Str:D)
     $a.map({
         push(
             @keypairs,
-            is-bare-key(.key) ?? .key !! .key.perl
+            is-bare-key(.key) ?? .key !! .key.raku
             ~ ' = '
             ~ to-toml(.value)
         )

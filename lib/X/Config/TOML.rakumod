@@ -329,7 +329,7 @@ class X::Config::TOML::Dumper::BadArray
         my Str:D $message = qq:to/EOF/.trim;
         Sorry, invalid TOML array.
 
-        Got: {$.array.perl}
+        Got: {$.array.raku}
         EOF
     }
 }
